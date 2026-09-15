@@ -1,0 +1,118 @@
+{
+  "cases": [
+    {
+      "id": "my-case13",
+      "language": "my",
+      "case": "case13",
+      "sourceId": "clone__v4_clone_dev_my_0087",
+      "text": "စပါနီးယတ်များသည် နယ်ချဲ့ကာလကို ရာစုနှစ် သုံးခုကြာ စတင်ခဲ့သည်။",
+      "referenceText": "ဤကျောက်တုံးများ၏ ဆယ့်ငါးခုမြောက် ကျောက်တုံးမှာ လွန်ခဲ့သော ဇူလိုင်လ၏ ဥက္ကာခဲကျဆင်းမှု ပါဝင်ခဲ့သည်။",
+      "referenceLanguage": "my",
+      "reference": {
+        "src": "assets/audio/my/case13/reference.wav",
+        "sha256": "d5d6f9fd9584234b11088d0b580e586487fc98a55b84dfb0e63d9d3302e5ecc2",
+        "duration": 7.56
+      },
+      "models": [
+        {
+          "system": "OMNI_BASE",
+          "src": "assets/audio/my/case13/OMNI_BASE.wav",
+          "sha256": "5b4514cf3ae6418b54dd30e0a0019000607868e0041e4acb394efbdb09f5e4d2",
+          "duration": 5.64
+        },
+        {
+          "system": "S",
+          "src": "assets/audio/my/case13/S.wav",
+          "sha256": "0c47c1c819b70fdd248dcb6e11182287745e6ab6084c3aca105144fb9c885ce3",
+          "duration": 5.44
+        },
+        {
+          "system": "RS",
+          "src": "assets/audio/my/case13/RS.wav",
+          "sha256": "38dcfcb2820843356e008686a54d3bc798d84801de32c260f1dc31eea81b31b5",
+          "duration": 5.12
+        },
+        {
+          "system": "SR",
+          "src": "assets/audio/my/case13/cubic.wav",
+          "sha256": "73261946b066e396aad010be8eeccd431e7bfca63b04318cf96e64103005a473",
+          "duration": 4.0,
+          "label": "FireRedTTS3 S→R cubic"
+        },
+        {
+          "system": "R",
+          "src": "assets/audio/my/case13/R.wav",
+          "sha256": "8452a79c7be7d5127e2a04ea4420c568c151e0cc8d46733189fc6e94d838116d",
+          "duration": 3.84
+        }
+      ],
+      "selection": {
+        "criterion": "Highest S→R overall score within language in the available collection; equal mean of naturalness, similarity, and pronunciation ratings.",
+        "overall": 4.333333333333333,
+        "listeners": 5,
+        "dimension_means": {
+          "naturalness_1_5": 4.8,
+          "voice_similarity_1_5": 4,
+          "pronunciation_accuracy_1_5": 4.2
+        }
+      }
+    },
+    {
+      "id": "lo-case12",
+      "language": "lo",
+      "case": "case12",
+      "sourceId": "fleurs_lo_la_test_0252_2003_b429428678ca",
+      "text": "ເພື່ອໃຫ້ໄດ້ທິວທັດທີ່ດີທີ່ສຸດຂອງຮ່ອງກົງ ໃຫ້ອອກຈາກເກາະ ແລະ ມຸ່ງໜ້າໄປ kowloon ທີ່ຢູ່ນ້ຳຝັ່ງກົງກັນຂ້າມ",
+      "referenceText": "ເມື່ອທ່ານໂທຫາຄົນທີ່ຢູ່ຫ່າງໄກກັນຫຼາຍພັນໄມລ໌ ນັ້ນສະແດງວ່າທ່ານກຳລັງໃຊ້ດາວທຽມ",
+      "referenceLanguage": "lo",
+      "reference": {
+        "src": "assets/audio/lo/case12/reference.wav",
+        "sha256": "f5e08c71974a0816be6cfb5fabf31a3cb2aa429774882545b935f03e783dd587",
+        "duration": 6.72
+      },
+      "models": [
+        {
+          "system": "SR",
+          "src": "assets/audio/lo/case12/cubic.wav",
+          "sha256": "b3b9ec66b1b99b6b6d2bb19551b1a500f9ee89d13f5a1fcfbe897628794ddec8",
+          "duration": 7.36,
+          "label": "FireRedTTS3 S→R cubic"
+        },
+        {
+          "system": "RS",
+          "src": "assets/audio/lo/case12/RS.wav",
+          "sha256": "95e2eac2ebb35453727693542f6c8dcf01deafc04998e7ce615b9fe9a0f7deb5",
+          "duration": 7.68
+        },
+        {
+          "system": "S",
+          "src": "assets/audio/lo/case12/S.wav",
+          "sha256": "fc8cd5be15ef9565c8d01088c8ddca6e13c4dc84a549147f18dc81e73e5cdf54",
+          "duration": 7.84
+        },
+        {
+          "system": "R",
+          "src": "assets/audio/lo/case12/R.wav",
+          "sha256": "d1c3a976de6cea5aa4ded49b8b3e219ed8f424a28bf90d02256088be504d1b18",
+          "duration": 7.2
+        }
+      ],
+      "selection": {
+        "criterion": "Highest S→R overall score within language in the available collection; equal mean of naturalness, similarity, and pronunciation ratings.",
+        "overall": 2.8666666666666667,
+        "listeners": 5,
+        "dimension_means": {
+          "naturalness_1_5": 3,
+          "voice_similarity_1_5": 2.8,
+          "pronunciation_accuracy_1_5": 2.8
+        }
+      }
+    }
+  ],
+  "provenance": {
+    "audio": "TTS_Listening_EN_15x2, 2026-09-12. Copied audio verified against original SHA-256 hashes.",
+    "label_correction": "The research author corrected the audio naming on 2026-09-15: S→R files previously marked 0.5 are cubic. The displayed model names follow this correction. Audio bytes are unchanged.",
+    "selection": "Exactly one highest-scoring S→R/cubic case per language from the existing mapped listening ratings, retaining all models and the shared reference for that case.",
+    "scope": "Selected examples illustrate synthesis quality; full evaluation statistics are reported separately in the manuscript."
+  }
+}
