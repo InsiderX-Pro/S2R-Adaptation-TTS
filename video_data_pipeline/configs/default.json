@@ -1,0 +1,130 @@
+{
+  "analysis_sample_rate": 16000,
+  "dataset_sample_rate": 24000,
+  "vad": {
+    "frame_ms": 30,
+    "hop_ms": 10,
+    "speech_margin_db": 10.0,
+    "min_threshold_dbfs": -48.0,
+    "max_threshold_dbfs": -24.0,
+    "min_speech_ms": 300,
+    "min_silence_ms": 350,
+    "speech_pad_ms": 180,
+    "merge_gap_ms": 300,
+    "target_segment_ms": 12000,
+    "max_segment_ms": 15000,
+    "split_search_ms": 3000,
+    "min_split_segment_ms": 1000,
+    "split_pause_window_ms": 180,
+    "split_distance_penalty_db": 1.5
+  },
+  "items": {
+    "max_duration_ms": 15000,
+    "max_gap_ms": 700,
+    "min_duration_ms": 1000,
+    "asr_min_duration_ms": 500,
+    "min_speaker_confidence": 0.67,
+    "audio_padding_left_ms": 200,
+    "audio_padding_right_ms": 350,
+    "split_search_radius_ms": 3000,
+    "split_min_piece_ms": 1000
+  },
+  "speaker_timeline": {
+    "boundary_tolerance_ms": 10,
+    "merge_adjacent_ms": 10,
+    "unknown_boundary_max_ms": 200,
+    "same_speaker_gap_max_ms": 200
+  },
+  "speaker_gate": {
+    "boundary_collar_ms": 150,
+    "max_other_speaker_ms": 100,
+    "max_other_speaker_ratio": 0.02,
+    "tail_max_other_speaker_ms": 100,
+    "tail_max_other_speaker_ratio": 0.02
+  },
+  "audio_quality": {
+    "frame_ms": 30,
+    "clipping_amplitude_ratio": 0.999,
+    "max_clipped_sample_ratio": 0.01,
+    "max_clipped_run_ms": 3.0,
+    "snr_noise_quantile": 0.2,
+    "snr_signal_quantile": 0.9,
+    "min_snr_db": 8.0,
+    "min_snr_duration_ms": 1000
+  },
+  "background_music": {
+    "enabled": true,
+    "model": "MIT/ast-finetuned-audioset-10-10-0.4593",
+    "model_revision": "f826b80d28226b62986cc218e5cec390b1096902",
+    "label": "Music",
+    "threshold": 0.2,
+    "sample_rate": 16000,
+    "window_seconds": 10.0,
+    "hop_seconds": 5.0,
+    "batch_size": 8,
+    "device": "auto"
+  },
+  "background_music_recovery": {
+    "enabled": true,
+    "process_all": true,
+    "audio_separator_version": "0.44.5",
+    "model_filename": "model_bs_roformer_ep_317_sdr_12.9755.ckpt",
+    "model_sha256": "5b84f37e8d444c8cb30c79d77f613a41c05868ff9c9ac6c7049c00aefae115aa",
+    "model_config_sha256": "2bfdd16c656bd9519aba757cc4f8834b7ede675eb1e00ec4772d74ae1c41af7f",
+    "minimum_padded_seconds": 12.0,
+    "use_autocast": true,
+    "max_post_music_probability": 0.1,
+    "min_music_probability_reduction": 0.05,
+    "min_signal_level_dbfs": -45.0,
+    "max_signal_loss_db": 18.0,
+    "max_duration_delta_ms": 100,
+    "timeout_seconds": 1200
+  },
+  "text_quality": {
+    "max_latin_ratio": 0.65,
+    "min_unnatural_latin_ratio": 0.35,
+    "max_repeated_token_run": 3,
+    "max_repeated_fourgram_count": 11
+  },
+  "short_policy": {
+    "drop_below_ms": 500,
+    "clear_short_max_ms": 1000,
+    "training_min_ratio": 0.02,
+    "training_target_ratio": 0.03,
+    "training_max_ratio": 0.05
+  },
+  "voice_effect_visual": {
+    "enabled": true,
+    "fps": 2.0,
+    "frame_width": 320,
+    "frame_height": 180,
+    "card_region": [
+      0.0625,
+      0.238889,
+      0.28125,
+      0.761111
+    ],
+    "navy_min_pixels": 3500,
+    "cyan_min_pixels": 300,
+    "cyan_max_pixels": 900,
+    "merge_gap_ms": 1000,
+    "min_interval_ms": 1500,
+    "min_clip_overlap_ratio": 0.5,
+    "min_clip_overlap_ms": 500
+  },
+  "gemini": {
+    "backend": "formal_rest",
+    "model": "gemini-2.5-flash",
+    "seeds": [
+      101
+    ],
+    "max_attempts": 1,
+    "timeout_s": 180,
+    "proxy_url": null,
+    "thinking_budget": 0,
+    "top_k": 1,
+    "max_output_tokens": 1024,
+    "prompt_id": "p3_flash_canonical_greedy",
+    "quality_enabled": true
+  }
+}

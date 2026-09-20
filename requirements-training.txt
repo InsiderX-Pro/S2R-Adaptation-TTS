@@ -1,0 +1,20 @@
+# Validated Python 3.12 training environment. Install torch/torchaudio from the
+# chosen PyTorch CPU/CUDA index first; these exact versions are then retained.
+torch==2.8.0
+torchaudio==2.8.0
+transformers==5.6.2
+accelerate==1.14.0
+safetensors==0.7.0
+tokenizers==0.22.2
+numpy==2.3.5
+scipy==1.17.0
+soundfile==0.13.1
+librosa==1.0.0
+einops==0.8.2
+webdataset==1.0.2
+tensorboardX==2.6.5
+pydub==0.25.1
+# Additional direct requirements used by the included upstream packages.
+huggingface-hub==1.28.0
+tqdm==4.67.3
+regex==2026.1.15

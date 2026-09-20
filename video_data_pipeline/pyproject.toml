@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ominivoice-data-pipeline"
+version = "0.1.0"
+description = "Resumable video-to-single-speaker dataset pipeline with frozen Gemini Flash ASR"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "certifi>=2024.2.2",
+  "google-auth>=2.0",
+  "numpy>=1.24",
+  "requests>=2.31",
+]
+
+[project.optional-dependencies]
+music = [
+  "torch>=2.1",
+  "transformers>=4.40",
+]
+separation = [
+  "audio-separator==0.44.5",
+]
+dev = [
+  "pytest>=8",
+]
+
+[project.scripts]
+ominivoice-data-pipeline = "ominivoice_data_pipeline.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+ominivoice_data_pipeline = ["default_config.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

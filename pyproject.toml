@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "s2r-adaptation"
+version = "0.3.0"
+description = "Transcript-agreement weighting for synthetic-to-real TTS adaptation"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+train = ["torch==2.8.0", "torchaudio==2.8.0", "transformers==5.6.2",
+         "accelerate==1.14.0", "safetensors==0.7.0", "tokenizers==0.22.2",
+         "numpy==2.3.5", "scipy==1.17.0", "soundfile==0.13.1", "librosa==1.0.0",
+         "einops==0.8.2", "webdataset==1.0.2", "tensorboardX==2.6.5",
+         "pydub==0.25.1", "huggingface-hub==1.28.0", "tqdm==4.67.3", "regex==2026.1.15"]
+fast = ["rapidfuzz>=3"]
+
+[project.scripts]
+s2r-prepare = "s2r_adaptation.manifests:main"
+s2r-video-pairs = "s2r_adaptation.video:main"
+s2r-firered = "s2r_adaptation.firered:main"
+s2r-omnivoice = "s2r_adaptation.omni_train:main"
+s2r-codec = "s2r_adaptation.codec:main"
+s2r-models = "s2r_adaptation.assets:main"
+
+[tool.setuptools.packages.find]
+include = ["s2r_adaptation*"]
+
+[tool.setuptools.package-data]
+s2r_adaptation = ["configs/firered/*.json", "configs/omnivoice/*.json"]

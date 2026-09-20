@@ -1,0 +1,2 @@
+{"id":"example-1","text":"abcd!","audio_path":"audio/example-1.wav","prompt_audio_path":"audio/reference-1.wav","prompt_text":"reference","speaker_id":"speaker-1"}
+{"id":"example-2","text":"ကခဂဃ","audio_path":"audio/example-2.wav","prompt_audio_path":"audio/reference-2.wav","prompt_text":"ကခ","speaker_id":"speaker-2"}
