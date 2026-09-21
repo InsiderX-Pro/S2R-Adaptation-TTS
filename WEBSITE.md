@@ -21,8 +21,12 @@ Do not change Pages to serve the repository root: it contains the private traini
 - On 15 September 2026 the author corrected the selected S→R audio labels from
   uniform 0.5 to cubic. The correction affects these clip labels, not the paper's
   separate uniform-weight ablations. Original audio bytes remain unchanged.
-- The GitHub resource links to this private source repository. No public model
-  weights, accepted venue, DOI or arXiv identifier are claimed.
+- The GitHub resource links to this private source repository. Hugging Face hosts
+  the public OmniVoice Burmese `omni_common400/checkpoint-200` native adapter.
+  This Common400 continuation is separate from the paper's cubic main-result
+  checkpoints; evaluations on its continuation data are in-sample.
+- The arXiv badge in the repository README is a placeholder. No accepted venue,
+  DOI or arXiv identifier is claimed.
 
 ## Editing and preview
 

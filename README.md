@@ -1,208 +1,168 @@
-# S2R Adaptation TTS
+<h1 align="center">From Reliable Text to Real Voices</h1>
 
-Reference source for **From Reliable Text to Real Voices: Trust-Aware Progressive
-Adaptation for Low-Resource TTS**. The repository covers real-video preprocessing,
-same-speaker reference pairing, dual-ASR reliability scoring and weighted
-synthetic-to-real adaptation.
+<h3 align="center">Trust-Aware Progressive Adaptation<br>for Low-Resource TTS</h3>
 
-[Project website and audio demos](https://insiderx-pro.github.io/S2R-Adaptation-TTS/)
- · [Latest manuscript](docs/assets/paper.pdf)
- · [Training guide](TRAINING.md)
+<p align="center"><strong>S2R-Adaptation-TTS · Burmese & Lao · FireRedTTS3 & OmniVoice</strong></p>
 
-The repository remains private while the source release is being prepared.
-The public research website is served exclusively from `docs/`; training source
-is not included in the website deployment.
+<p align="center">
+Jiayi Lu<sup>1,2,*</sup> · Yizhong Geng<sup>1,3,*</sup> · Jinghan Yang<sup>3</sup> · Yingming Gao<sup>3</sup> · Ya Li<sup>3,†</sup>
+</p>
+<p align="center">
+<sup>1</sup> Beijing Logic Intelligence Technology &nbsp; <sup>2</sup> University of Washington<br>
+<sup>3</sup> Beijing University of Posts and Telecommunications<br>
+<sub>* Equal contribution &nbsp; † Corresponding author</sub>
+</p>
 
-## Latest paper results
+<p align="center">
+  <a href="https://insiderx-pro.github.io/S2R-Adaptation-TTS/"><img alt="Project page — open demo" src="https://img.shields.io/badge/Project_Page-Open_Demo-0f766e?style=for-the-badge"></a>
+  <a href="#paper-and-citation"><img alt="Paper — arXiv coming soon (placeholder)" src="https://img.shields.io/badge/Paper-arXiv_Coming_Soon-b31b1b?style=for-the-badge"></a>
+  <a href="https://huggingface.co/joa8115/S2R-Adaptation-TTS"><img alt="Weights — Hugging Face" src="https://img.shields.io/badge/Weights-Hugging_Face-f59e0b?style=for-the-badge"></a>
+  <a href="https://github.com/InsiderX-Pro/S2R-Adaptation-TTS"><img alt="Code — GitHub" src="https://img.shields.io/badge/Code-GitHub-24292f?style=for-the-badge"></a>
+</p>
 
-Adapted CER and SIM-O are mean ± sample SD over seeds 42/17/73.
-MOS is mean [approximate 95% crossed-bootstrap CI], with 20 listeners and
-30 matched conditions per language (600 ratings per system).
+<p align="center">
+<a href="#method">Method</a> · <a href="#paper-results">Results</a> · <a href="#listen-and-compare">Audio</a> · <a href="#model-weights">Weights</a> · <a href="#getting-started">Get started</a>
+</p>
 
-| Cubic S→R | CER (%) ↓ | SIM-O ↑ | H ↑ | MOS ↑ | Independent-ASR CER (%) ↓ |
-|---|---|---|---|---|---|
-| FireRedTTS3 / Burmese | 16.90 ± 0.26 | 0.6997 ± 0.0016 | 75.97 | 4.12 [3.93, 4.30] | 19.34 |
-| FireRedTTS3 / Lao | 13.97 ± 0.36 | 0.6968 ± 0.0045 | 77.00 | 3.97 [3.77, 4.17] | 18.53 |
-| OmniVoice / Burmese | 6.85 ± 0.08 | 0.7098 ± 0.0026 | 80.57 | 4.51 [4.35, 4.66] | 9.83 |
+---
 
-OmniVoice Base has 10.35% CER and 0.7278 SIM-O. Cubic improves its CER
-by 3.50 percentage points. Numerical rankings do not establish significance;
-only the FireRedTTS3/Burmese paired cubic-minus-uniform-0.5 MOS interval
-excludes zero. See the manuscript and website for all strategies and controls.
+**Learn pronunciation from synthetic speech. Recover speaker control with real voices.**
+S2R-Adaptation-TTS studies how the order and reliability of weak supervision shape
+low-resource speech synthesis. Synthetic pairs establish text–speech correspondences;
+real recordings then recover speaker conditioning. Agreement between two fixed ASR
+systems controls each real example's training weight, while the primary transcript
+remains unchanged.
 
-Website content and provenance are documented in [WEBSITE.md](WEBSITE.md).
+## Method
 
-This is a source-only reference: no running data, real transcripts, model weights,
-run reports, machine-specific paths, credentials or server-specific launch scripts are
-included. All data, model and output locations are supplied by the caller.
+<p align="center">
+<img src="docs/assets/method.png" alt="Synthetic supervision followed by transcript-agreement-weighted adaptation on real speech" width="960">
+</p>
 
-## Source layout
-
-| Location | Purpose |
-|---|---|
-| `video_data_pipeline/` | Selected actual video-processing implementation and tests |
-| `s2r_adaptation/video.py` | Video output → distinct same-recording/speaker target/reference pairs |
-| `s2r_adaptation/agreement.py` | Scoring-only text normalization, ASR disagreement and cubic weights |
-| `s2r_adaptation/manifests.py` | Validated ASR join and prepared S/R manifests |
-| `s2r_adaptation/losses.py` | FireRed and OmniVoice loss reductions by example count |
-| `backbones/` | Included FireRed training/core/exporter and OmniVoice 0.1.5 source |
-| `s2r_adaptation/firered.py` | FireRed stage configuration, preflight, training and export |
-| `s2r_adaptation/codec.py` | Target/reference waveform → paired OmniVoice codec tokens |
-| `s2r_adaptation/omni_train.py` | Complete OmniVoice full/LoRA S → R and same-stage resume |
-| `s2r_adaptation/omni_lora/` | Recovered native OmniVoice LoRA implementation |
-| `s2r_adaptation/configs/` | Eight complete language/stage/backbone templates |
-| `scripts/` | Portable S → R orchestration for both backbones |
-| `examples/` | Invented transcript records with placeholder audio paths |
-| `tests/` | Scoring, pairing, loss/gradient and optional native integration tests |
-
-The full path is:
+| Stage | Supervision | What it learns |
+| :--- | :--- | :--- |
+| **01 · Synthetic** | Filtered teacher-generated pairs; unit sample weights | Target-language pronunciation and text–speech correspondence |
+| **02 · Agreement** | Two ASR transcripts of the same real recording | Reliability from normalized character disagreement |
+| **03 · Real** | Original audio and primary transcripts; cubic weights | Reference-speaker control with less influence from uncertain labels |
 
 ```text
-local video/audio → audio extraction → VAD + diarization → single-speaker clips
-  → audio/music/text quality checks + ASR1 → accepted primary-text manifest
-  → distinct same-speaker reference pairing
-  → ASR2 on the same final target audio → disagreement → cubic weight
-  → S adaptation with unit weights → R adaptation with per-example weights
+weight = max(0.10, (1 − min(transcript_disagreement, 1))³)
+loss   = sum(weight × complete_sample_loss) / number_of_examples
 ```
 
-## Method contract
+Architectures and objectives stay unchanged. Optimizers and schedules restart
+between stages. Offline ASR scoring adds no inference-time ASR.
+Agreement is informative, but does not prove transcript correctness.
 
-```python
-d = edit_distance(normalize(asr1_text), normalize(asr2_text)) / len(normalize(asr1_text))
-w = max(0.10, (1.0 - min(d, 1.0)) ** 3.0)
-loss = sum(w_i * full_sample_loss_i for i in batch) / len(batch)
+## Paper Results
+
+**Cubic S→R** has the highest observed joint score H and mean naturalness MOS in
+all three evaluated settings. These are the paper's main experiments.
+
+| Backbone / language | CER (%) ↓ | SIM-O ↑ | H ↑ | Naturalness MOS ↑ |
+| :--- | ---: | ---: | ---: | ---: |
+| FireRedTTS3 · Burmese | 16.90 ± 0.26 | 0.6997 ± 0.0016 | **75.97** | **4.12** [3.93, 4.30] |
+| FireRedTTS3 · Lao | 13.97 ± 0.36 | 0.6968 ± 0.0045 | **77.00** | **3.97** [3.77, 4.17] |
+| OmniVoice · Burmese | **6.85 ± 0.08** | 0.7098 ± 0.0026 | **80.57** | **4.51** [4.35, 4.66] |
+
+CER and SIM-O: mean ± sample SD over seeds 42/17/73. MOS: mean [approximate
+95% crossed-bootstrap CI], with 20 listeners × 30 matched conditions per language.
+Numerical rankings do not establish significance: only the FireRedTTS3/Burmese
+paired cubic-minus-uniform-0.5 MOS interval excludes zero.
+
+<details>
+<summary><strong>Independent ASR and evaluation details</strong></summary>
+
+| Cubic S→R setting | Independent recognizer | CER (%) ↓ |
+| :--- | :--- | ---: |
+| FireRedTTS3 · Burmese | Dolphin-small | 19.34 |
+| FireRedTTS3 · Lao | XLS-R Lao | 18.53 |
+| OmniVoice · Burmese | Dolphin-small | 9.83 |
+
+These recognizers rescore the same audio and target texts. They were excluded
+from labeling, reliability estimation, filtering and model selection.
+Burmese uses Common400 CER / Clone300 SIM-O; Lao uses FLEURS404.
+OmniVoice Base has 10.35% CER; cubic improves it by 3.50 points.
+Compare CER within the same language and recognizer.
+
+[All strategies, baselines and ablations →](https://insiderx-pro.github.io/S2R-Adaptation-TTS/#results)
+
+</details>
+
+## Listen and Compare
+
+Open the **[interactive audio comparisons](https://insiderx-pro.github.io/S2R-Adaptation-TTS/#audio)**
+to hear the same text and reference voice across adaptation strategies.
+
+| Language | Included comparisons |
+| :--- | :--- |
+| **Burmese** | OmniVoice Base; FireRedTTS3 S, R, R→S and cubic S→R |
+| **Lao** | FireRedTTS3 S, R, R→S and cubic S→R |
+
+[Download all 11 WAV files](docs/assets/selected-audio.zip) · [Audio metadata](docs/assets/demo-data.json)
+
+## Model Weights
+
+**[Hugging Face · joa8115/S2R-Adaptation-TTS](https://huggingface.co/joa8115/S2R-Adaptation-TTS)**
+
+| Checkpoint | Backbone | Format | Adaptation |
+| :--- | :--- | :--- | :--- |
+| `omni_common400/checkpoint-200` | OmniVoice · Burmese | Native routed LoRA; rank 8 / alpha 16 | Common400 continuation, 200 steps, uniform weight 0.5 |
+
+This checkpoint was continued on Common400 itself. Any evaluation on that set is
+**in-sample**; this artifact is separate from the paper's cubic main-result models.
+It requires the matching OmniVoice base and native routed adapter loader,
+not a generic PEFT loader. See the Hugging Face model card for usage.
+
+## Getting Started
+
+| Task | Start here |
+| :--- | :--- |
+| Install, train and export | [Training guide](TRAINING.md) |
+| Process real audio and pair references | [Video preprocessing](video_data_pipeline/README.md) |
+| Join ASR outputs and compute weights | [Reproduction workflow](REPRODUCTION.md#2-run-asr2-and-build-cubic-weights) |
+| Run S→R adaptation | [Complete reproduction guide](REPRODUCTION.md) |
+| Update the paper site | [Website guide](WEBSITE.md) |
+
+<details>
+<summary><strong>Repository map</strong></summary>
+
+```text
+S2R-Adaptation-TTS/
+├── s2r_adaptation/       # Agreement, weighted losses and trainers
+├── backbones/           # FireRedTTS3 and OmniVoice source
+├── video_data_pipeline/ # Video preprocessing and quality checks
+├── scripts/             # S→R training entry points
+├── examples/            # Illustrative manifest records
+├── tests/               # Method and training integration tests
+└── docs/                # Project website, paper and audio demos
 ```
 
-`normalize` applies Unicode NFC and removes whitespace and Unicode categories
-P/S/C. Letters, numbers and combining marks are retained. Distance and length
-use code points. Case, numerals and Zawgyi are not converted. Normalization is
-used only for scoring; ASR1 remains the training text without fusion/correction.
+GitHub Pages publishes only `docs/`. The GitHub repository remains private.
+Training data and base-model weights are not stored in this repository.
 
-Empty normalized primary labels are excluded. A successful empty ASR2
-transcript gives `d=1`; a failed or missing request is an error by default.
-Disagreement can exceed one before clipping. The weight floor is applied after
-the power: at `d=0.2`, `0.5`, `0.6`, weights are `0.512`, `0.125`, `0.1`.
+</details>
 
-FireRed weights the whole `flow + 0.1 * stop` loss. OmniVoice computes masked
-acoustic-token CE within each example, retains the model's codebook coefficients,
-then applies the example weight. Divide by example count, not weight sum.
-Uniform 0.5 weighting halves loss and gradients; it need not halve AdamW updates.
+## Paper and Citation
 
-## Install and test
+**[Read the manuscript](docs/assets/paper.pdf)** · **arXiv: coming soon**
 
-```bash
-python -m pip install -r requirements-training.txt
-python -m pip install --no-deps -e . -e ./backbones/firered -e ./backbones/omnivoice
-python -m pip install -e './video_data_pipeline[music,dev]'
-python -m unittest discover -s tests -v
-python -m unittest discover -s video_data_pipeline/tests -v
+The arXiv badge is a placeholder until an identifier is available. No accepted
+venue, DOI or arXiv identifier is claimed.
+
+```bibtex
+@unpublished{lu2026reliable,
+  title = {From Reliable Text to Real Voices: Trust-Aware Progressive Adaptation for Low-Resource TTS},
+  author = {Lu, Jiayi and Geng, Yizhong and Yang, Jinghan and Gao, Yingming and Li, Ya},
+  year = {2026},
+  note = {Manuscript}
+}
 ```
 
-Use Python 3.12 for the pinned training environment. Scoring/pairing support Python 3.10+ without third-party packages;
-RapidFuzz accelerates large inputs. PyTorch is needed for loss tests/adapters.
-Video processing additionally uses FFmpeg, the caller's pyannote and separator
-environments, and configured Gemini credentials. See the
-[video preprocessing README](video_data_pipeline/README.md) for the selected
-modules, preserved processing settings and environment variables.
+## Acknowledgements and Source Scope
 
-All required backbone source is now included. [TRAINING.md](TRAINING.md) provides
-installation, immutable public model revisions, complete commands, checkpoint
-formats and verification instructions. Tests use tiny native models and synthetic
-fixtures; pretrained model files are not bundled.
-
-## Reproduction workflow
-
-The variables below are caller-supplied locations. Set `DATA_WORK_DIR` to a
-working directory **outside this source tree**. Example commands create outputs
-there; generated outputs are not part of this repository.
-
-### 1. Process real recordings and pair references
-
-```bash
-python -m ominivoice_data_pipeline run "$VIDEO_INPUT" \
-  --output-dir "$DATA_WORK_DIR/video" \
-  --pyannote-python "$PYANNOTE_PYTHON" \
-  --pyannote-model "$PYANNOTE_MODEL_DIR"
-
-python -m s2r_adaptation.video \
-  --input-manifest "$DATA_WORK_DIR/video/training_manifest.jsonl" \
-  --output-dir "$DATA_WORK_DIR/pairs" --language my --seed 42
-```
-
-The bridge preserves the video's finalized primary ASR text and scopes local
-speaker labels by recording. Each target gets a different 1–10 second reference
-from the same recording/speaker; identical audio hashes cannot form a pair.
-Unpaired/ineligible targets are reported. This deterministic pairing policy is
-a reference implementation, not a claim to recover old experiment assignments.
-
-### 2. Run ASR2 and build cubic weights
-
-Run a fixed ASR2 on the exact final target audio from `pairs/primary.jsonl`.
-Record `id`, `audio_sha256`, `hypothesis`, `status="success"` and optionally
-`model_id`. The ASR2 model/service runner is an external input; the weighting
-step consumes its saved results.
-
-```bash
-python -m s2r_adaptation.manifests \
-  --primary "$DATA_WORK_DIR/pairs/primary.jsonl" \
-  --secondary "$ASR2_RESULTS" --require-audio-sha \
-  --gamma 3 --w-min 0.10 --output-dir "$DATA_WORK_DIR/R-data"
-```
-
-Primary rows contain stable string `id` and unchanged `text` plus the original
-training fields. Secondary IDs may use `id` or `target_id`; duplicate or conflicting
-IDs fail. Optional secondary `reference` must equal ASR1 text exactly. Audio
-digests must match when both are present; `--require-audio-sha` requires both.
-Join by ID, not line order or approximate text. No waveform is modified here.
-
-Each prepared directory contains a generated `train.jsonl`, `excluded.jsonl`
-and `report.json` with counts/statistics/checksums. Output directories must be
-new and failed preparation publishes no partial manifest.
-
-`--on-asr-error exclude` explicitly records failed/missing requests as exclusions.
-`--asr-format archived` is only for verified historical success tables without
-row status: it requires `canonical.cer` and recomputes it from the two transcripts.
-It cannot retrospectively establish request success.
-
-### 3. Train S, transfer model weights, and train R
-
-The complete entry points, native backbone source, model download revisions,
-paired codec preparation, eight configuration templates and checkpoint/export
-code are included. Follow [TRAINING.md](TRAINING.md) to install the environment
-and set your own data/model locations.
-
-```bash
-bash scripts/train_firered_s2r.sh
-# Use a separate fresh DATA_WORK_DIR for each backbone/mode/seed:
-TRAIN_MODE=full bash scripts/train_omnivoice_s2r.sh
-TRAIN_MODE=lora bash scripts/train_omnivoice_s2r.sh
-```
-
-FireRed extracts frozen RedAE/CAM++ features on demand, trains S with its native
-FSDP implementation, exports a model-only core, and starts R with fresh optimizer,
-scheduler and RNG state. The training extension and exporter are supplied in
-`backbones/firered`.
-
-OmniVoice encodes distinct target/reference audio with its pinned Higgs codec,
-uses reference audio as conditioning and masked target tokens for CE, then applies
-the per-example weight. Full and recovered native LoRA training both support S → R
-and separate same-stage resume. Codec preparation no longer requires an external
-private pipeline. All generated tokens and checkpoints stay outside this tree.
-
-| Language | S updates / learning rate | R updates / learning rate |
-|---|---|---|
-| Burmese (`my`) | 53,640 / 2e-6 | 16,015 / 1e-6 |
-| Lao (`lo`) | 39,749 / 2e-6 | 8,668 / 1e-6 |
-
-Presets use one device, accumulation 3, cosine scheduling and 3% warmup. Paper
-seeds are 42/17/73. Every replication needs the corresponding S initialization.
-The LoRA option preserves the recovered adapter implementation but is an additional
-reference tuning option, not a claim to reproduce the paper's full-tuning scores.
-
-## Scope and release
-
-This implementation reconstructs the paper's weighting path and selects the
-surviving real-video processing code for reference. It does not contain paper
-run data or claim byte-identical historical source/checkpoint reproduction.
-The project owner must select a release license before publication. See
-[THIRD_PARTY.md](THIRD_PARTY.md) for dependency/source scope.
+Built on **FireRedTTS3** and **OmniVoice**, with retained upstream licenses and
+provenance in [THIRD_PARTY.md](THIRD_PARTY.md). The reference implementation
+reconstructs the adaptation workflow; it does not claim byte-identical recovery
+of all historical experiment code. Project-specific code licensing will be
+finalized before a public code release.
