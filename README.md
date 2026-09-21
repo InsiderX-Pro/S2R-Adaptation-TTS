@@ -5,7 +5,7 @@
 <p align="center"><strong>S2R-Adaptation-TTS · Burmese & Lao · FireRedTTS3 & OmniVoice</strong></p>
 
 <p align="center">
-Jiayi Lu<sup>1,2,*</sup> · Yizhong Geng<sup>1,3,*</sup> · Jinghan Yang<sup>3</sup> · Lexing Huang<sup>4</sup> · Boxun An<sup>5</sup> · Yingming Gao<sup>3</sup> · Ya Li<sup>3,†</sup>
+Jiayi Lu<sup>1,2,*</sup> · Yizhong Geng<sup>1,3,*</sup> · Jinghan Yang<sup>3</sup> · Tianhan Jiang<sup>4</sup> · Boxun An<sup>5</sup> · Yingming Gao<sup>3</sup> · Ya Li<sup>3,†</sup>
 </p>
 <p align="center">
 <sup>1</sup> Beijing Logic Intelligence Technology &nbsp; <sup>2</sup> University of Washington<br>
@@ -17,7 +17,7 @@ Jiayi Lu<sup>1,2,*</sup> · Yizhong Geng<sup>1,3,*</sup> · Jinghan Yang<sup>3</
 <p align="center">
   <a href="https://insiderx-pro.github.io/S2R-Adaptation-TTS/"><img alt="Project page — open demo" src="https://img.shields.io/badge/Project_Page-Open_Demo-0f766e?style=for-the-badge"></a>
   <a href="#paper-and-citation"><img alt="Paper — arXiv coming soon (placeholder)" src="https://img.shields.io/badge/Paper-arXiv_Coming_Soon-b31b1b?style=for-the-badge"></a>
-  <a href="https://huggingface.co/joa8115/S2R-Adaptation-TTS"><img alt="Weights — Hugging Face" src="https://img.shields.io/badge/Weights-Hugging_Face-f59e0b?style=for-the-badge"></a>
+  <a href="https://huggingface.co/InsiderX-Pro/S2R-Adaptation-TTS"><img alt="Weights — Hugging Face" src="https://img.shields.io/badge/Weights-Hugging_Face-f59e0b?style=for-the-badge"></a>
   <a href="https://github.com/InsiderX-Pro/S2R-Adaptation-TTS"><img alt="Code — GitHub" src="https://img.shields.io/badge/Code-GitHub-24292f?style=for-the-badge"></a>
 </p>
 
@@ -104,7 +104,7 @@ to hear the same text and reference voice across adaptation strategies.
 
 ## Model Weights
 
-**[Hugging Face · joa8115/S2R-Adaptation-TTS](https://huggingface.co/joa8115/S2R-Adaptation-TTS)**
+**[Hugging Face · InsiderX-Pro/S2R-Adaptation-TTS](https://huggingface.co/InsiderX-Pro/S2R-Adaptation-TTS)**
 
 | Checkpoint | Backbone | Format | Adaptation |
 | :--- | :--- | :--- | :--- |
@@ -154,7 +154,7 @@ venue, DOI or arXiv identifier is claimed.
 ```bibtex
 @unpublished{lu2026reliable,
   title = {From Reliable Text to Real Voices: Trust-Aware Progressive Adaptation for Low-Resource TTS},
-  author = {Lu, Jiayi and Geng, Yizhong and Yang, Jinghan and Huang, Lexing and An, Boxun and Gao, Yingming and Li, Ya},
+  author = {Lu, Jiayi and Geng, Yizhong and Yang, Jinghan and Jiang, Tianhan and An, Boxun and Gao, Yingming and Li, Ya},
   year = {2026},
   note = {Manuscript}
 }
