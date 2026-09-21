@@ -106,12 +106,11 @@ to hear the same text and reference voice across adaptation strategies.
 
 **[Hugging Face · InsiderX-Pro/S2R-Adaptation-TTS](https://huggingface.co/InsiderX-Pro/S2R-Adaptation-TTS)**
 
-| Checkpoint | Backbone | Format | Adaptation |
-| :--- | :--- | :--- | :--- |
-| `omni_common400/checkpoint-200` | OmniVoice · Burmese | Native routed LoRA; rank 8 / alpha 16 | Common400 continuation, 200 steps, uniform weight 0.5 |
+| Release | Backbone | Format |
+| :--- | :--- | :--- |
+| `cubic` | OmniVoice · Burmese | Native routed LoRA; rank 8 / alpha 16 |
 
-This checkpoint was continued on Common400 itself. Any evaluation on that set is
-**in-sample**; this artifact is separate from the paper's cubic main-result models.
+Paper results are reported separately and are not benchmark claims for this download.
 It requires the matching OmniVoice base and native routed adapter loader,
 not a generic PEFT loader. See the Hugging Face model card for usage.
 
