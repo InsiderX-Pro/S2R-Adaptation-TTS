@@ -5,7 +5,7 @@
 <p align="center"><strong>S2R-Adaptation-TTS · Burmese & Lao · FireRedTTS3 & OmniVoice</strong></p>
 
 <p align="center">
-Jiayi Lu<sup>1,2,*</sup> · Yizhong Geng<sup>1,3,*</sup> · Jinghan Yang<sup>3</sup> · <a href="mailto:tij007@ucsd.edu">Lexing Huang</a><sup>4</sup> · <a href="mailto:boxunan2029@u.northwestern.edu">Boxun An</a><sup>5</sup> · Yingming Gao<sup>3</sup> · Ya Li<sup>3,†</sup>
+Jiayi Lu<sup>1,2,*</sup> · Yizhong Geng<sup>1,3,*</sup> · Jinghan Yang<sup>3</sup> · Lexing Huang<sup>4</sup> · Boxun An<sup>5</sup> · Yingming Gao<sup>3</sup> · Ya Li<sup>3,†</sup>
 </p>
 <p align="center">
 <sup>1</sup> Beijing Logic Intelligence Technology &nbsp; <sup>2</sup> University of Washington<br>
