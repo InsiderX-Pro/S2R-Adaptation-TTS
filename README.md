@@ -5,11 +5,12 @@
 <p align="center"><strong>S2R-Adaptation-TTS · Burmese & Lao · FireRedTTS3 & OmniVoice</strong></p>
 
 <p align="center">
-Jiayi Lu<sup>1,2,*</sup> · Yizhong Geng<sup>1,3,*</sup> · Jinghan Yang<sup>3</sup> · Yingming Gao<sup>3</sup> · Ya Li<sup>3,†</sup>
+Jiayi Lu<sup>1,2,*</sup> · Yizhong Geng<sup>1,3,*</sup> · Jinghan Yang<sup>3</sup> · <a href="mailto:tij007@ucsd.edu">Lexing Huang</a><sup>4</sup> · <a href="mailto:boxunan2029@u.northwestern.edu">Boxun An</a><sup>5</sup> · Yingming Gao<sup>3</sup> · Ya Li<sup>3,†</sup>
 </p>
 <p align="center">
 <sup>1</sup> Beijing Logic Intelligence Technology &nbsp; <sup>2</sup> University of Washington<br>
 <sup>3</sup> Beijing University of Posts and Telecommunications<br>
+<sup>4</sup> University of California, USA &nbsp; <sup>5</sup> Northwestern University, USA<br>
 <sub>* Equal contribution &nbsp; † Corresponding author</sub>
 </p>
 
@@ -153,7 +154,7 @@ venue, DOI or arXiv identifier is claimed.
 ```bibtex
 @unpublished{lu2026reliable,
   title = {From Reliable Text to Real Voices: Trust-Aware Progressive Adaptation for Low-Resource TTS},
-  author = {Lu, Jiayi and Geng, Yizhong and Yang, Jinghan and Gao, Yingming and Li, Ya},
+  author = {Lu, Jiayi and Geng, Yizhong and Yang, Jinghan and Huang, Lexing and An, Boxun and Gao, Yingming and Li, Ya},
   year = {2026},
   note = {Manuscript}
 }
