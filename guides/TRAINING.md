@@ -21,7 +21,7 @@ From this repository's root, in your chosen virtual environment:
 ```bash
 python -m pip install torch==2.8.0 torchaudio==2.8.0 \
   --index-url https://download.pytorch.org/whl/cu128
-python -m pip install -r requirements-training.txt
+python -m pip install -r requirements/training.txt
 python -m pip install --no-deps -e . -e ./backbones/firered -e ./backbones/omnivoice
 ```
 
@@ -29,7 +29,7 @@ For CPU tests, use the CPU PyTorch index instead. Video preprocessing has its ow
 installation instructions in `video_data_pipeline/README.md`; its separator and
 diarization workers can use separate environments.
 
-The direct training dependencies are pinned in `requirements-training.txt`.
+The direct training dependencies are pinned in `requirements/training.txt`.
 This is a tested dependency set, not a complete operating-system/CUDA image lock.
 `backbones/SOURCES.json` identifies the included source snapshots and original
 file digests; Apache license notices are retained beside both backbones.
@@ -65,7 +65,7 @@ segments. Target duration is 0.4–20 seconds and reference duration is 1–10 s
 Use absolute paths for input pairs; locations are caller-specific and belong in
 external data manifests. Do not copy those manifests into the release source.
 
-The video pairing command in the root README produces this contract for real
+The video pairing command in the [reproduction guide](REPRODUCTION.md#1-process-real-recordings-and-pair-references) produces this contract for real
 recordings. Synthetic pairs retain the teacher's original input text. The
 weighting preparer retains all original fields and adds weight/provenance fields.
 

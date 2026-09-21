@@ -37,7 +37,7 @@ Do not change Pages to serve the repository root: it contains the private traini
 - `docs/assets/paper.pdf` and `docs/assets/method.png`: manuscript and figure.
 - `docs/assets/demo-data.json` and `docs/demo-data.js`: matching audio metadata.
 
-Run `python -m http.server 8765 --directory docs` and open
+From the repository root, run `python -m http.server 8765 --directory docs` and open
 http://localhost:8765/. No frontend build is required. Native audio controls,
 single-player playback, keyboard language/result tabs and citation copy are retained.
 

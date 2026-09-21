@@ -116,19 +116,23 @@ not a generic PEFT loader. See the Hugging Face model card for usage.
 
 ## Getting Started
 
+[Browse all guides](guides/README.md). Run installation and training commands from the repository root.
+
 | Task | Start here |
 | :--- | :--- |
-| Install, train and export | [Training guide](TRAINING.md) |
+| Install, train and export | [Training guide](guides/TRAINING.md) |
 | Process real audio and pair references | [Video preprocessing](video_data_pipeline/README.md) |
-| Join ASR outputs and compute weights | [Reproduction workflow](REPRODUCTION.md#2-run-asr2-and-build-cubic-weights) |
-| Run S→R adaptation | [Complete reproduction guide](REPRODUCTION.md) |
-| Update the paper site | [Website guide](WEBSITE.md) |
+| Join ASR outputs and compute weights | [Reproduction workflow](guides/REPRODUCTION.md#2-run-asr2-and-build-cubic-weights) |
+| Run S→R adaptation | [Complete reproduction guide](guides/REPRODUCTION.md) |
+| Update the paper site | [Website guide](guides/WEBSITE.md) |
 
 <details>
 <summary><strong>Repository map</strong></summary>
 
 ```text
 S2R-Adaptation-TTS/
+├── guides/               # Training, reproduction, source scope and website guides
+├── requirements/         # Pinned training dependencies
 ├── s2r_adaptation/       # Agreement, weighted losses and trainers
 ├── backbones/           # FireRedTTS3 and OmniVoice source
 ├── video_data_pipeline/ # Video preprocessing and quality checks
@@ -162,7 +166,7 @@ venue, DOI or arXiv identifier is claimed.
 ## Acknowledgements and Source Scope
 
 Built on **FireRedTTS3** and **OmniVoice**, with retained upstream licenses and
-provenance in [THIRD_PARTY.md](THIRD_PARTY.md). The reference implementation
+provenance in [THIRD_PARTY.md](guides/THIRD_PARTY.md). The reference implementation
 reconstructs the adaptation workflow; it does not claim byte-identical recovery
 of all historical experiment code. Project-specific code licensing will be
 finalized before a public code release.

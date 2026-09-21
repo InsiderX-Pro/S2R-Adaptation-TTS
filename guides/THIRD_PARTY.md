@@ -14,7 +14,7 @@
   reference orchestration, not asserted to be byte-identical historical scripts.
 - `backbones/SOURCES.json` records source provenance and original file digests.
   `TRAINING.md` links the upstream projects and exact public model revisions.
-  `requirements-training.txt` pins the tested direct training dependencies.
+  `requirements/training.txt` pins the tested direct training dependencies.
 - RapidFuzz remains an optional scoring accelerator; a pure-Python exact
   implementation is included. The native OmniVoice adapter does not need PEFT.
 

@@ -1,6 +1,6 @@
 # S2R Adaptation TTS · Reproduction Guide
 
-[Project overview](README.md) · [Model weights](README.md#model-weights)
+[Project overview](../README.md) · [Model weights](../README.md#model-weights)
 
 Reference source for **From Reliable Text to Real Voices: Trust-Aware Progressive
 Adaptation for Low-Resource TTS**. The repository covers real-video preprocessing,
@@ -8,7 +8,7 @@ same-speaker reference pairing, dual-ASR reliability scoring and weighted
 synthetic-to-real adaptation.
 
 [Project website and audio demos](https://insiderx-pro.github.io/S2R-Adaptation-TTS/)
- · [Latest manuscript](docs/assets/paper.pdf)
+ · [Latest manuscript](../docs/assets/paper.pdf)
  · [Training guide](TRAINING.md)
 
 The repository remains private while the source release is being prepared.
@@ -92,8 +92,10 @@ Uniform 0.5 weighting halves loss and gradients; it need not halve AdamW updates
 
 ## Install and test
 
+Run the commands below from the repository root.
+
 ```bash
-python -m pip install -r requirements-training.txt
+python -m pip install -r requirements/training.txt
 python -m pip install --no-deps -e . -e ./backbones/firered -e ./backbones/omnivoice
 python -m pip install -e './video_data_pipeline[music,dev]'
 python -m unittest discover -s tests -v
@@ -104,7 +106,7 @@ Use Python 3.12 for the pinned training environment. Scoring/pairing support Pyt
 RapidFuzz accelerates large inputs. PyTorch is needed for loss tests/adapters.
 Video processing additionally uses FFmpeg, the caller's pyannote and separator
 environments, and configured Gemini credentials. See the
-[video preprocessing README](video_data_pipeline/README.md) for the selected
+[video preprocessing README](../video_data_pipeline/README.md) for the selected
 modules, preserved processing settings and environment variables.
 
 All required backbone source is now included. [TRAINING.md](TRAINING.md) provides
