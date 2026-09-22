@@ -7,10 +7,12 @@ Do not change Pages to serve the repository root: it contains the private traini
 
 ## Content provenance
 
-- The five-page paper PDF is rebuilt from `piedpiperG/ICASSP2027-SythenticTTS-Luoji`
-  on 21 September 2026 with the updated author order and affiliations.
-  The results remain aligned with the supplied `ICASSP2027_SythenticTTS_Luoji (1).pdf`
-  synchronized on 20 September 2026. Figure 1 is rendered from that supplied PDF's second page.
+- The five-page paper PDF is the supplied `ICASSP2027_SythenticTTS_Luoji.pdf`,
+  synchronized byte-for-byte on 22 September 2026. The website abstract and overview
+  reflect its revised motivation and description of trust-aware progressive adaptation.
+  The title and seven-author list remain unchanged.
+- Figure 1 is rendered from the second page of the previously supplied manuscript
+  synchronized on 20 September 2026; the latest manuscript retains the same diagram.
 - Tables 1–3, three-seed sample standard deviations, MOS confidence intervals,
   independent-ASR scores and experimental descriptions follow that manuscript.
 - The 11 selected WAV files, their metadata and the download archive are preserved

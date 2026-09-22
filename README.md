@@ -29,8 +29,11 @@ Jiayi Lu<sup>1,2,*</sup> · Yizhong Geng<sup>1,3,*</sup> · Jinghan Yang<sup>3</
 
 **Learn pronunciation from synthetic speech. Recover speaker control with real voices.**
 S2R-Adaptation-TTS studies how the order and reliability of weak supervision shape
-low-resource speech synthesis. Synthetic pairs establish text–speech correspondences;
-real recordings then recover speaker conditioning. Agreement between two fixed ASR
+low-resource speech synthesis when paired data is scarce and manual transcription is
+costly. Fixed-voice TTS supplies pronunciation supervision with limited speaker diversity;
+real recordings add natural prosody and diverse voices, with potentially noisy ASR labels.
+Synthetic pairs establish text–speech correspondences before real recordings recover
+speaker conditioning. Agreement between two fixed ASR
 systems controls each real example's training weight, while the primary transcript
 remains unchanged.
 
@@ -150,6 +153,8 @@ Training data and base-model weights are not stored in this repository.
 ## Paper and Citation
 
 **[Read the manuscript](docs/assets/paper.pdf)** · **arXiv: coming soon**
+
+Latest manuscript: 22 September 2026 · 5 pages.
 
 The arXiv badge is a placeholder until an identifier is available. No accepted
 venue, DOI or arXiv identifier is claimed.
