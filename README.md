@@ -154,7 +154,7 @@ Training data and base-model weights are not stored in this repository.
 
 **[Read the manuscript](docs/assets/paper.pdf)** · **arXiv: coming soon**
 
-Latest manuscript: 22 September 2026 · 5 pages.
+Latest manuscript: 23 September 2026 · 5 pages. Includes the revised contributions, real-recording screening, and quantified identical-but-incorrect ASR transcripts.
 
 The arXiv badge is a placeholder until an identifier is available. No accepted
 venue, DOI or arXiv identifier is claimed.

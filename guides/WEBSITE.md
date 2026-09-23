@@ -7,10 +7,15 @@ Do not change Pages to serve the repository root: it contains the private traini
 
 ## Content provenance
 
-- The five-page paper PDF is the supplied `ICASSP2027_SythenticTTS_Luoji.pdf`,
-  synchronized byte-for-byte on 22 September 2026. The website abstract and overview
-  reflect its revised motivation and description of trust-aware progressive adaptation.
-  The title and seven-author list remain unchanged.
+- The five-page paper PDF is synchronized byte-for-byte with `Template.pdf` from
+  [manuscript commit `19a3037`](https://github.com/piedpiperG/ICASSP2027-SythenticTTS-Luoji/commit/19a3037a19c8650df2f0e8891d7dbd6cf89426b0)
+  on 23 September 2026. Its SHA-256 is
+  `3bbdde39c5b0c3c118f1a4231a71b5b90e839af61d1087bf81aec8f1f305c802`.
+  The website contribution cards retain the latest manuscript claims; the data
+  protocol and reliability validation include real-recording screening and the
+  3.2% identical-but-incorrect normalized-transcript result on the full Burmese
+  FLEURS training split. The separate 2,921-utterance correlation and CER results
+  remain intact. The abstract, title and seven-author list are unchanged.
 - Figure 1 is rendered from the second page of the previously supplied manuscript
   synchronized on 20 September 2026; the latest manuscript retains the same diagram.
 - Tables 1–3, three-seed sample standard deviations, MOS confidence intervals,
