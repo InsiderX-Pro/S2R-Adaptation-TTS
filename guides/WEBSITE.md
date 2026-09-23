@@ -8,9 +8,9 @@ Do not change Pages to serve the repository root: it contains the private traini
 ## Content provenance
 
 - The five-page paper PDF is synchronized byte-for-byte with `Template.pdf` from
-  [manuscript commit `19a3037`](https://github.com/piedpiperG/ICASSP2027-SythenticTTS-Luoji/commit/19a3037a19c8650df2f0e8891d7dbd6cf89426b0)
+  [manuscript commit `efe0053`](https://github.com/piedpiperG/ICASSP2027-SythenticTTS-Luoji/commit/efe0053a2663fb6a46aa60781f1dc5cb09bcafa5)
   on 23 September 2026. Its SHA-256 is
-  `3bbdde39c5b0c3c118f1a4231a71b5b90e839af61d1087bf81aec8f1f305c802`.
+  `6d74df836213725af2da894f1fb1901130e894d4b783629d5effba7fb73ae516`.
   The website contribution cards retain the latest manuscript claims; the data
   protocol and reliability validation include real-recording screening and the
   3.2% identical-but-incorrect normalized-transcript result on the full Burmese
