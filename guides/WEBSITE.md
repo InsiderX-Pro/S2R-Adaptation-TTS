@@ -35,8 +35,10 @@ Do not change Pages to serve the repository root: it contains the private traini
 - The GitHub resource links to this private source repository. Hugging Face hosts
   the public OmniVoice Burmese `cubic` native adapter and inference helpers.
   Paper results are reported separately and are not benchmark claims for this download.
-- The arXiv badge in the repository README is a placeholder. No accepted venue,
-  DOI or arXiv identifier is claimed.
+- The paper is available as [arXiv:2609.25951](https://arxiv.org/abs/2609.25951)
+  (v1, submitted 22 September 2026). The website and repository PDF remain the
+  later 23 September manuscript with the Ethical Statement. No accepted venue is
+  claimed.
 
 ## Editing and preview
 

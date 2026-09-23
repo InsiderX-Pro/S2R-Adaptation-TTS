@@ -16,7 +16,7 @@ Jiayi Lu<sup>1,2,*</sup> · Yizhong Geng<sup>1,3,*</sup> · Jinghan Yang<sup>3</
 
 <p align="center">
   <a href="https://insiderx-pro.github.io/S2R-Adaptation-TTS/"><img alt="Project page — open demo" src="https://img.shields.io/badge/Project_Page-Open_Demo-0f766e?style=for-the-badge"></a>
-  <a href="#paper-and-citation"><img alt="Paper — arXiv coming soon (placeholder)" src="https://img.shields.io/badge/Paper-arXiv_Coming_Soon-b31b1b?style=for-the-badge"></a>
+  <a href="https://arxiv.org/abs/2609.25951"><img alt="Paper — arXiv:2609.25951" src="https://img.shields.io/badge/Paper-arXiv%3A2609.25951-b31b1b?style=for-the-badge"></a>
   <a href="https://huggingface.co/InsiderX-Pro/S2R-Adaptation-TTS"><img alt="Weights — Hugging Face" src="https://img.shields.io/badge/Weights-Hugging_Face-f59e0b?style=for-the-badge"></a>
   <a href="https://github.com/InsiderX-Pro/S2R-Adaptation-TTS"><img alt="Code — GitHub" src="https://img.shields.io/badge/Code-GitHub-24292f?style=for-the-badge"></a>
 </p>
@@ -152,19 +152,22 @@ Training data and base-model weights are not stored in this repository.
 
 ## Paper and Citation
 
-**[Read the manuscript](docs/assets/paper.pdf)** · **arXiv: coming soon**
+**[arXiv:2609.25951](https://arxiv.org/abs/2609.25951)** · **[Latest manuscript PDF](docs/assets/paper.pdf)**
 
-Latest manuscript: 23 September 2026 · 5 pages. Includes the revised contributions, real-recording screening, and quantified identical-but-incorrect ASR transcripts.
+Latest repository manuscript: 23 September 2026 · 5 pages. Includes the revised contributions, real-recording screening, quantified identical-but-incorrect ASR transcripts, and an Ethical Statement.
 
-The arXiv badge is a placeholder until an identifier is available. No accepted
-venue, DOI or arXiv identifier is claimed.
+The arXiv link points to v1, submitted 22 September 2026. The repository PDF
+contains the later 23 September revisions. No accepted venue is claimed.
 
 ```bibtex
-@unpublished{lu2026reliable,
+@misc{lu2026reliable,
   title = {From Reliable Text to Real Voices: Trust-Aware Progressive Adaptation for Low-Resource TTS},
   author = {Lu, Jiayi and Geng, Yizhong and Yang, Jinghan and Jiang, Tianhan and An, Boxun and Gao, Yingming and Li, Ya},
   year = {2026},
-  note = {Manuscript}
+  eprint = {2609.25951},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.SD},
+  url = {https://arxiv.org/abs/2609.25951}
 }
 ```
 
